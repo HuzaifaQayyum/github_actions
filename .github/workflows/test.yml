@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: change directory
-        run: cd frontend
+        working-directory: ./frontend
 
       - name: install dependencies
         run: npm install
