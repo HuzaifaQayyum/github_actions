@@ -7,11 +7,11 @@ jobs:
       - name: get code
         uses: actions/checkout@v3
 
-      - name: change directory
-        working-directory: ./frontend
 
       - name: install dependencies
+        working-directory: ./frontend
         run: npm install
 
       - name: run tests
+        working-directory: ./frontend
         run: npm run test
