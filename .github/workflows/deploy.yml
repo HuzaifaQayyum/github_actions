@@ -25,3 +25,18 @@ jobs:
         with:
           name: dist
           path: frontend/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+
+      - name: prints content
+        run: ls
+
+      - name: deploy
+        run: echo "Deploying...";
