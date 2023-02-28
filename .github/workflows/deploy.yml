@@ -1,16 +1,27 @@
-name: deploy frontend
-on: push
+name: deploy
+on: 
+  push:
+    branches:
+      - main
+    workflow_dispatch
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
+      - name: get code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: install dependencies
         working-directory: ./frontend
-        run: npm install
+        run: npm ci
 
-      - name: Deploy code
+      - name: build
+        run: npm run build
+
+      - name: upload build
         working-directory: ./frontend
-        run: echo "Deploying code ${{ toJSON(github) }}"
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
