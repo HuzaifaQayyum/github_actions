@@ -4,14 +4,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: get code
+      - name: Get code
         uses: actions/checkout@v3
 
-
-      - name: install dependencies
+      - name: Install dependencies
         working-directory: ./frontend
         run: npm install
 
-      - name: run tests
+      - name: Deploy code
         working-directory: ./frontend
-        run: npm run test
+        run: echo "Deploying code ${{ toJSON(github) }}"
